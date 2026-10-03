@@ -1,6 +1,6 @@
 # ApexDrive — Vehicle Rental and Fleet Management System
 
-A full-stack, enterprise-grade monolithic **Vehicle Rental & Fleet Management System** developed using **Spring Boot 3**, **Java 17**, **Spring Data JPA (Hibernate 6)**, **Spring Security 6**, **JJWT (JSON Web Tokens)**, and a **modern, responsive web frontend**.
+A full-stack, enterprise-grade monolithic **Vehicle Rental & Fleet Management System** developed using **Spring Boot 3.5.16**, **Java 25 LTS**, **Spring Data JPA (Hibernate 6)**, **Spring Security 6**, **JJWT (JSON Web Tokens)**, and a **modern, responsive web frontend**.
 
 ---
 
@@ -33,7 +33,7 @@ A full-stack, enterprise-grade monolithic **Vehicle Rental & Fleet Management Sy
 
 | Layer | Technologies |
 | :--- | :--- |
-| **Backend** | Spring Boot 3.2.5, Java 17 LTS, Spring MVC REST APIs |
+| **Backend** | Spring Boot 3.5.16, Java 25 LTS, Spring MVC REST APIs |
 | **Security** | Spring Security 6, JJWT (`io.jsonwebtoken 0.11.5`), BCrypt Password Encoding |
 | **ORM & DB** | Spring Data JPA, Hibernate 6, MySQL 8.x / MariaDB, H2 In-Memory DB (Dev profile) |
 | **Frontend** | Vanilla ES6+ JavaScript, Custom Modern CSS3 Design System, Bootstrap Icons |
@@ -57,7 +57,7 @@ The system automatically initializes realistic seed data upon startup:
 ## ⚙️ Running the Project
 
 ### Prerequisites
-- **Java 17 JDK** or higher (`java -version`)
+- **Java 25 JDK** (`java -version`)
 - **Maven 3.8+** or bundled Maven Wrapper (`./mvnw.cmd` on Windows)
 
 ### 1. Running with Default `dev` Profile (H2 In-Memory Database)
