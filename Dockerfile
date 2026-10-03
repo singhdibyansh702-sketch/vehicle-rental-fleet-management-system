@@ -22,5 +22,5 @@ COPY --from=build /app/target/vehicle-rental-system-1.0.0.jar app.jar
 # Expose server port
 EXPOSE 8081
 
-# Run Spring Boot app
-ENTRYPOINT ["java", "-Dserver.port=${PORT:-8081}", "-jar", "app.jar"]
+# Run Spring Boot app with dynamic port support for cloud providers
+ENTRYPOINT ["sh", "-c", "exec java -Dserver.port=${PORT:-8081} -jar app.jar"]
