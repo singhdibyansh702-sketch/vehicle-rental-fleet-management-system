@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/api/:match*",
-      "destination": "https://YOUR_BACKEND_URL.onrender.com/api/:match*"
+      "destination": "https://vehicle-rental-fleet-management-system.onrender.com/api/:match*"
     }
   ]
 }
