@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Customer Account | ApexDrive</title>
+  <meta name="description" content="Register as a driver or customer to unlock instant car & bike bookings with zero security deposit.">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <i class="bi bi-car-front-fill"></i>
+        <span>ApexDrive</span>
+        <span class="brand-badge">Fleet Pro</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/vehicles.html" class="nav-link">Our Fleet</a>
+        <a href="/about.html" class="nav-link">About Us</a>
+        <a href="/contact.html" class="nav-link">Contact & Support</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="/login.html" class="btn btn-outline btn-sm">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Split Screen Auth Page -->
+  <div class="auth-wrapper">
+    <!-- Visual Side -->
+    <div class="auth-visual">
+      <div class="auth-quote">
+        <div class="badge badge-success" style="margin-bottom: 1rem;">
+          <i class="bi bi-person-check"></i> Instant Verification
+        </div>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 1rem;">
+          Join thousands of drivers experiencing seamless self-drive rentals.
+        </h2>
+        <p style="color: var(--text-sub); font-size: 0.95rem;">
+          Fast digital onboarding • Instant booking confirmations • Comprehensive vehicle safety guarantee
+        </p>
+      </div>
+    </div>
+
+    <!-- Form Side -->
+    <div class="auth-form-side" style="padding: 2.5rem 2rem;">
+      <div class="auth-card" style="max-width: 480px;">
+        <div class="auth-header" style="margin-bottom: 1.5rem;">
+          <h2>Create Account</h2>
+          <p>Sign up in under a minute to start renting.</p>
+        </div>
+
+        <form id="register-form" onsubmit="handleRegister(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="reg-name"><i class="bi bi-person"></i> Full Name *</label>
+              <input type="text" id="reg-name" class="form-control" placeholder="John Doe" required minlength="2">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-phone"><i class="bi bi-telephone"></i> Mobile Number *</label>
+              <input type="tel" id="reg-phone" class="form-control" placeholder="9812345678" required pattern="[0-9]{10,15}">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="reg-email"><i class="bi bi-envelope"></i> Email Address *</label>
+            <input type="email" id="reg-email" class="form-control" placeholder="john@example.com" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="reg-password"><i class="bi bi-key"></i> Password (min 6 characters) *</label>
+            <input type="password" id="reg-password" class="form-control" placeholder="••••••••" required minlength="6">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="reg-dl"><i class="bi bi-card-heading"></i> Driving License Number (Optional)</label>
+            <input type="text" id="reg-dl" class="form-control" placeholder="KA-0420210012345">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" for="reg-address"><i class="bi bi-geo-alt"></i> Residential Address (Optional)</label>
+            <textarea id="reg-address" class="form-control" rows="2" placeholder="Street, City, State, PIN"></textarea>
+          </div>
+
+          <button type="submit" id="reg-btn" class="btn btn-primary btn-block btn-lg" style="margin-bottom: 1.5rem;">
+            <i class="bi bi-person-plus-fill"></i> Complete Registration
+          </button>
+
+          <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+            Already have an account? 
+            <a href="/login.html" style="color: #60a5fa; font-weight: 600;">Sign in here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script>
+    async function handleRegister(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('reg-name').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-password').value;
+      const drivingLicenseNumber = document.getElementById('reg-dl').value.trim();
+      const address = document.getElementById('reg-address').value.trim();
+
+      const btn = document.getElementById('reg-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="bi bi-arrow-repeat" style="animation: spin 1s linear infinite;"></i> Creating Account...';
+
+      try {
+        const payload = {
+          name,
+          email,
+          password,
+          phone,
+          drivingLicenseNumber: drivingLicenseNumber || null,
+          address: address || null
+        };
+
+        const res = await API.auth.register(payload);
+        showToast('Account registered successfully! Please sign in.', 'success');
+
+        setTimeout(() => {
+          window.location.href = '/login.html';
+        }, 1200);
+      } catch (err) {
+        showToast(`Registration failed: ${err.message}`, 'error');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-person-plus-fill"></i> Complete Registration';
+      }
+    }
+  </script>
+</body>
+</html>

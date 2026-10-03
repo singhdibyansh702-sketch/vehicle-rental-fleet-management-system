@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Details & Reservation | ApexDrive</title>
+  <meta name="description" content="View complete specifications and reserve this vehicle instantly with real-time availability check.">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <i class="bi bi-car-front-fill"></i>
+        <span>ApexDrive</span>
+        <span class="brand-badge">Fleet Pro</span>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div class="nav-links">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/vehicles.html" class="nav-link active">Our Fleet</a>
+        <a href="/about.html" class="nav-link">About Us</a>
+        <a href="/contact.html" class="nav-link">Contact & Support</a>
+      </div>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Dynamically injected via api.js updateNavbar() -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb Bar -->
+  <div style="background: rgba(15, 23, 42, 0.6); border-bottom: 1px solid var(--border); padding: 0.85rem 0;">
+    <div class="container" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+      <a href="/index.html"><i class="bi bi-house"></i> Home</a>
+      <span>/</span>
+      <a href="/vehicles.html">Fleet Catalog</a>
+      <span>/</span>
+      <span id="breadcrumb-title" style="color: #fff; font-weight: 600;">Vehicle Specifications</span>
+    </div>
+  </div>
+
+  <!-- Main Vehicle Details Content -->
+  <main class="container" style="padding: 2.5rem 1.5rem 5rem;">
+    <div id="loading-state" style="text-align: center; padding: 5rem 0;">
+      <i class="bi bi-arrow-repeat" style="font-size: 2.5rem; animation: spin 1s linear infinite; display: inline-block;"></i>
+      <p style="margin-top: 1rem; color: var(--text-muted);">Loading vehicle specifications & calendar...</p>
+    </div>
+
+    <div id="details-container" style="display: none;">
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: start;">
+        
+        <!-- Left: Gallery & Specifications -->
+        <div>
+          <!-- Hero Vehicle Image Presentation -->
+          <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); height: 420px; background: #0f172a; margin-bottom: 1.5rem;">
+            <img id="detail-img" src="" alt="Vehicle photo" style="width: 100%; height: 100%; object-fit: cover;">
+            <span id="detail-type-tag" class="vehicle-type-tag" style="top: 1.25rem; left: 1.25rem; font-size: 0.85rem; padding: 0.35rem 0.75rem;"></span>
+            <span id="detail-status-badge" class="badge vehicle-badge-status" style="top: 1.25rem; right: 1.25rem; font-size: 0.85rem; padding: 0.4rem 0.8rem;"></span>
+          </div>
+
+          <!-- Vehicle Title & Specs Header -->
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+              <div>
+                <span id="detail-brand" style="text-transform: uppercase; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.05em; font-weight: 600;"></span>
+                <h1 id="detail-model" style="font-size: 2rem; font-weight: 800; color: #fff; line-height: 1.2;"></h1>
+              </div>
+              <span id="detail-reg" class="vehicle-reg" style="font-size: 0.95rem; padding: 0.35rem 0.75rem;"></span>
+            </div>
+
+            <p id="detail-desc" style="color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
+
+            <!-- Detailed Grid Specs -->
+            <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
+              <i class="bi bi-speedometer2"></i> Vehicle Specifications
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+                <i class="bi bi-people" style="font-size: 1.25rem;"></i>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Capacity</span>
+                <strong id="detail-seats" style="color: #fff; font-size: 0.95rem;"></strong>
+              </div>
+
+              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+                <i class="bi bi-fuel-pump" style="font-size: 1.25rem;"></i>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Fuel System</span>
+                <strong id="detail-fuel" style="color: #fff; font-size: 0.95rem;"></strong>
+              </div>
+
+              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+                <i class="bi bi-gear" style="font-size: 1.25rem;"></i>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Transmission</span>
+                <strong id="detail-trans" style="color: #fff; font-size: 0.95rem;"></strong>
+              </div>
+
+              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+                <i class="bi bi-calendar3" style="font-size: 1.25rem;"></i>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Model Year</span>
+                <strong id="detail-year" style="color: #fff; font-size: 0.95rem;"></strong>
+              </div>
+
+              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+                <i class="bi bi-speedometer" style="font-size: 1.25rem;"></i>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Rated Mileage</span>
+                <strong id="detail-mileage" style="color: #fff; font-size: 0.95rem;"></strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Included Features Assurance -->
+          <div class="card">
+            <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem;">
+              <i class="bi bi-patch-check-fill" style="color: var(--primary);"></i> Included With Every Booking
+            </h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.875rem; color: var(--text-sub);">
+              <div><i class="bi bi-check2-circle" style="color: var(--success);"></i> Full Comprehensive Insurance</div>
+              <div><i class="bi bi-check2-circle" style="color: var(--success);"></i> 24/7 Roadside Assistance</div>
+              <div><i class="bi bi-check2-circle" style="color: var(--success);"></i> Free Cancellation up to 24 hrs</div>
+              <div><i class="bi bi-check2-circle" style="color: var(--success);"></i> Sanitized & Deep-Cleaned</div>
+              <div><i class="bi bi-check2-circle" style="color: var(--success);"></i> Full Fuel Tank Dispatch</div>
+              <div><i class="bi bi-check2-circle" style="color: var(--success);"></i> Digital Keyless / Quick Handover</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Reservation & Live Price Calculation Widget -->
+        <div style="position: sticky; top: 96px;">
+          <div class="card" style="border-color: rgba(37, 99, 235, 0.4); box-shadow: var(--shadow-xl);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+              <div>
+                <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Standard Rate</span>
+                <div style="display: flex; align-items: baseline; gap: 0.3rem;">
+                  <span id="widget-price" style="font-size: 2rem; font-weight: 800; color: #fff;"></span>
+                  <span style="color: var(--text-muted); font-size: 0.85rem;">/ day</span>
+                </div>
+              </div>
+              <span id="widget-status" class="badge"></span>
+            </div>
+
+            <!-- Booking Dates Form -->
+            <form id="booking-form" onsubmit="handleReserveSubmit(event)">
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label" for="book-start-date">
+                  <i class="bi bi-calendar-event"></i> Pickup Date
+                </label>
+                <input type="date" id="book-start-date" class="form-control" required onchange="calculateBooking()">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="book-end-date">
+                  <i class="bi bi-calendar-check"></i> Return Date
+                </label>
+                <input type="date" id="book-end-date" class="form-control" required onchange="calculateBooking()">
+              </div>
+
+              <!-- Live Availability Alert Banner -->
+              <div id="availability-banner" style="display: none; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.85rem; margin-bottom: 1.25rem;"></div>
+
+              <!-- Price Breakdown Table -->
+              <div style="background: rgba(15, 23, 42, 0.5); border-radius: var(--radius-md); padding: 1rem; border: 1px solid var(--border); margin-bottom: 1.5rem; font-size: 0.875rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-sub);">
+                  <span id="calc-days-label">3 Days × Daily Rate</span>
+                  <span id="calc-subtotal" style="color: #fff; font-weight: 600;">₹0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-sub);">
+                  <span>Taxes & GST (18%)</span>
+                  <span style="color: var(--success); font-weight: 600;">Included</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; color: var(--text-sub);">
+                  <span>Mandatory Fleet Insurance</span>
+                  <span style="color: var(--success); font-weight: 600;">FREE</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 1.15rem; font-weight: 800; color: #fff;">
+                  <span>Estimated Total</span>
+                  <span id="calc-grand-total" style="color: #60a5fa;">₹0</span>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="reserve-btn" class="btn btn-primary btn-block btn-lg">
+                <i class="bi bi-lightning-charge"></i> Instant Reserve
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Reservation Confirmation & Payment Modal -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="bi bi-shield-check" style="color: var(--primary);"></i> Complete Reservation</h3>
+        <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.25); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem;">
+          <h4 id="checkout-vehicle-name" style="color: #fff; font-size: 1.1rem; margin-bottom: 0.25rem;"></h4>
+          <p id="checkout-dates-text" style="color: var(--text-muted); font-size: 0.85rem;"></p>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.5rem; font-size: 1.1rem; font-weight: 700; color: #60a5fa;">
+            <span>Total Payable:</span>
+            <span id="checkout-amount-display"></span>
+          </div>
+        </div>
+
+        <form id="payment-form" onsubmit="handlePaymentSubmit(event)">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label"><i class="bi bi-credit-card-2-front"></i> Select Simulated Payment Method</label>
+            <select id="payment-method" class="form-control" required>
+              <option value="UPI">UPI (Google Pay, PhonePe, Paytm)</option>
+              <option value="CARD">Credit / Debit Card (Visa, MasterCard)</option>
+              <option value="CASH">Counter Settlement / Cash on Pickup</option>
+            </select>
+          </div>
+
+          <div id="upi-details" class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label">Virtual Payment Address (VPA)</label>
+            <input type="text" id="upi-vpa" class="form-control" value="customer@okaxis" placeholder="username@upi">
+          </div>
+
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            <i class="bi bi-info-circle"></i> This is a simulated student college project payment processor. No actual bank charge will occur.
+          </div>
+
+          <div class="modal-footer" style="padding: 0; border: none;">
+            <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()">Cancel</button>
+            <button type="submit" id="pay-submit-btn" class="btn btn-success">
+              <i class="bi bi-lock-fill"></i> Authorize & Confirm
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-box" style="text-align: center; padding: 2.5rem 1.5rem;">
+      <div style="width: 70px; height: 70px; border-radius: var(--radius-full); background: rgba(16, 185, 129, 0.2); color: var(--success); font-size: 2.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+        <i class="bi bi-check-lg"></i>
+      </div>
+      <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 0.5rem;">Booking Confirmed!</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+        Your vehicle reservation has been successfully placed and locked in.
+      </p>
+
+      <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: left; font-size: 0.875rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+          <span style="color: var(--text-muted);">Booking Reference:</span>
+          <strong id="success-booking-ref" style="color: #60a5fa; font-family: monospace;"></strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+          <span style="color: var(--text-muted);">Vehicle:</span>
+          <span id="success-vehicle-name" style="color: #fff; font-weight: 600;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Payment Status:</span>
+          <span class="badge badge-success">PAID</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <a href="/customer/dashboard.html" class="btn btn-primary">
+          <i class="bi bi-speedometer2"></i> View in My Bookings
+        </a>
+        <a href="/vehicles.html" class="btn btn-outline">
+          Browse More Vehicles
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="/index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <i class="bi bi-car-front-fill"></i>
+            <span>ApexDrive</span>
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.875rem; max-width: 320px; line-height: 1.6;">
+            Next-generation fleet mobility platform engineered with Spring Boot 3, Java 17, and modern frontend styling.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Fleet Classes</h4>
+          <ul>
+            <li><a href="/vehicles.html?type=SUV">Rugged SUVs</a></li>
+            <li><a href="/vehicles.html?type=SEDAN">Executive Sedans</a></li>
+            <li><a href="/vehicles.html?type=LUXURY">Luxury Collection</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Portals</h4>
+          <ul>
+            <li><a href="/login.html">Sign In</a></li>
+            <li><a href="/customer/dashboard.html">My Bookings</a></li>
+            <li><a href="/admin/dashboard.html">Fleet Admin Console</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+            <li><i class="bi bi-envelope"></i> support@vehiclerental.com</li>
+            <li><i class="bi bi-shield-check"></i> Zero Deposit Guaranteed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 ApexDrive Systems Inc. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script>
+    let currentVehicle = null;
+    let pendingBookingId = null;
+    let pendingBookingAmount = 0;
+    let calculatedAmount = 0;
+    let calculatedDays = 1;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+
+      if (!id) {
+        showToast('No vehicle ID specified', 'error');
+        setTimeout(() => window.location.href = '/vehicles.html', 1500);
+        return;
+      }
+
+      // Set default dates: tomorrow and +3 days
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const returnDate = new Date();
+      returnDate.setDate(tomorrow.getDate() + 3);
+
+      document.getElementById('book-start-date').value = tomorrow.toISOString().split('T')[0];
+      document.getElementById('book-end-date').value = returnDate.toISOString().split('T')[0];
+
+      // Set min date to tomorrow
+      document.getElementById('book-start-date').min = new Date().toISOString().split('T')[0];
+      document.getElementById('book-end-date').min = tomorrow.toISOString().split('T')[0];
+
+      await loadVehicleDetails(id);
+    });
+
+    async function loadVehicleDetails(id) {
+      try {
+        const res = await API.vehicles.getById(id);
+        currentVehicle = res.data;
+
+        document.title = `${currentVehicle.brand} ${currentVehicle.model} | ApexDrive`;
+        document.getElementById('breadcrumb-title').textContent = `${currentVehicle.brand} ${currentVehicle.model}`;
+
+        document.getElementById('detail-img').src = currentVehicle.imageUrl || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80';
+        document.getElementById('detail-type-tag').textContent = currentVehicle.vehicleType;
+
+        const statusClass = `badge-${currentVehicle.status.toLowerCase()}`;
+        const statusBadge = document.getElementById('detail-status-badge');
+        statusBadge.className = `badge ${statusClass} vehicle-badge-status`;
+        statusBadge.textContent = currentVehicle.status;
+
+        document.getElementById('detail-brand').textContent = currentVehicle.brand;
+        document.getElementById('detail-model').textContent = currentVehicle.model;
+        document.getElementById('detail-reg').textContent = currentVehicle.registrationNumber;
+        document.getElementById('detail-desc').textContent = currentVehicle.description || 'Premium road performer engineered for comfort, safety, and power.';
+
+        document.getElementById('detail-seats').textContent = `${currentVehicle.seatingCapacity} Passengers`;
+        document.getElementById('detail-fuel').textContent = currentVehicle.fuelType;
+        document.getElementById('detail-trans').textContent = currentVehicle.transmission;
+        document.getElementById('detail-year').textContent = currentVehicle.manufactureYear || '2023';
+        document.getElementById('detail-mileage').textContent = currentVehicle.mileage || '16 km/l';
+
+        document.getElementById('widget-price').textContent = formatCurrency(currentVehicle.pricePerDay);
+        const widgetStatus = document.getElementById('widget-status');
+        widgetStatus.className = `badge ${statusClass}`;
+        widgetStatus.textContent = currentVehicle.status;
+
+        document.getElementById('loading-state').style.display = 'none';
+        document.getElementById('details-container').style.display = 'block';
+
+        calculateBooking();
+      } catch (err) {
+        document.getElementById('loading-state').innerHTML = `
+          <div style="color: var(--danger);">
+            <i class="bi bi-exclamation-triangle" style="font-size: 2.5rem;"></i>
+            <h3 style="margin-top: 1rem; color: #fff;">Vehicle Not Found</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">${err.message}</p>
+            <a href="/vehicles.html" class="btn btn-primary btn-sm">Return to Fleet Catalog</a>
+          </div>
+        `;
+      }
+    }
+
+    async function calculateBooking() {
+      if (!currentVehicle) return;
+
+      const start = document.getElementById('book-start-date').value;
+      const end = document.getElementById('book-end-date').value;
+      const banner = document.getElementById('availability-banner');
+      const reserveBtn = document.getElementById('reserve-btn');
+
+      if (!start || !end) return;
+
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+
+      if (endDate <= startDate) {
+        banner.style.display = 'block';
+        banner.style.background = 'rgba(239, 68, 68, 0.15)';
+        banner.style.color = '#f87171';
+        banner.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+        banner.innerHTML = '<i class="bi bi-x-circle"></i> Return date must be strictly after pickup date.';
+        reserveBtn.disabled = true;
+        return;
+      }
+
+      const diffTime = Math.abs(endDate - startDate);
+      calculatedDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      calculatedAmount = calculatedDays * currentVehicle.pricePerDay;
+
+      document.getElementById('calc-days-label').textContent = `${calculatedDays} Day${calculatedDays > 1 ? 's' : ''} × ${formatCurrency(currentVehicle.pricePerDay)}`;
+      document.getElementById('calc-subtotal').textContent = formatCurrency(calculatedAmount);
+      document.getElementById('calc-grand-total').textContent = formatCurrency(calculatedAmount);
+
+      // Check live availability on backend
+      try {
+        const availRes = await API.vehicles.checkAvailability(currentVehicle.id, start, end);
+        const isAvailable = availRes.data.available;
+
+        banner.style.display = 'block';
+        if (isAvailable && currentVehicle.status !== 'MAINTENANCE') {
+          banner.style.background = 'rgba(16, 185, 129, 0.15)';
+          banner.style.color = '#34d399';
+          banner.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+          banner.innerHTML = '<i class="bi bi-check-circle"></i> Vehicle is available for your selected dates!';
+          reserveBtn.disabled = false;
+        } else {
+          banner.style.background = 'rgba(245, 158, 11, 0.15)';
+          banner.style.color = '#fbbf24';
+          banner.style.border = '1px solid rgba(245, 158, 11, 0.3)';
+          banner.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Vehicle is booked/unavailable for these dates. Please choose alternate dates.';
+          reserveBtn.disabled = true;
+        }
+      } catch (err) {
+        console.error('Availability check failed:', err);
+      }
+    }
+
+    async function handleReserveSubmit(e) {
+      e.preventDefault();
+
+      if (!Auth.isLoggedIn()) {
+        showToast('Please sign in or register to complete your reservation', 'warning');
+        setTimeout(() => {
+          window.location.href = `/login.html?redirect=${encodeURIComponent(window.location.href)}`;
+        }, 1200);
+        return;
+      }
+
+      const start = document.getElementById('book-start-date').value;
+      const end = document.getElementById('book-end-date').value;
+
+      const submitBtn = document.getElementById('reserve-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="bi bi-arrow-repeat" style="animation: spin 1s linear infinite;"></i> Creating Reservation...';
+
+      try {
+        const bookingReq = {
+          vehicleId: currentVehicle.id,
+          startDate: start,
+          endDate: end
+        };
+
+        const res = await API.bookings.create(bookingReq);
+        const booking = res.data;
+        pendingBookingId = booking.id;
+        pendingBookingAmount = booking.totalAmount;
+
+        // Open simulated payment checkout modal
+        document.getElementById('checkout-vehicle-name').textContent = `${currentVehicle.brand} ${currentVehicle.model} (${currentVehicle.registrationNumber})`;
+        document.getElementById('checkout-dates-text').textContent = `Duration: ${formatDate(start)} to ${formatDate(end)} (${booking.totalDays} Days)`;
+        document.getElementById('checkout-amount-display').textContent = formatCurrency(booking.totalAmount);
+
+        document.getElementById('checkout-modal').classList.add('active');
+      } catch (err) {
+        showToast(`Booking failed: ${err.message}`, 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="bi bi-lightning-charge"></i> Instant Reserve';
+      }
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.remove('active');
+    }
+
+    async function handlePaymentSubmit(e) {
+      e.preventDefault();
+
+      if (!pendingBookingId) return;
+
+      const method = document.getElementById('payment-method').value;
+      const payBtn = document.getElementById('pay-submit-btn');
+      payBtn.disabled = true;
+      payBtn.innerHTML = '<i class="bi bi-arrow-repeat" style="animation: spin 1s linear infinite;"></i> Processing Authorization...';
+
+      try {
+        const paymentPayload = {
+          bookingId: pendingBookingId,
+          amount: pendingBookingAmount || calculatedAmount,
+          paymentMethod: method,
+          notes: `Simulated checkout via ${method}`
+        };
+
+        const payRes = await API.payments.process(paymentPayload);
+        closeCheckoutModal();
+
+        // Show Success Modal
+        document.getElementById('success-booking-ref').textContent = `BK-${pendingBookingId.toString().padStart(4, '0')}`;
+        document.getElementById('success-vehicle-name').textContent = `${currentVehicle.brand} ${currentVehicle.model}`;
+        document.getElementById('success-modal').classList.add('active');
+      } catch (err) {
+        showToast(`Payment simulation failed: ${err.message}`, 'error');
+      } finally {
+        payBtn.disabled = false;
+        payBtn.innerHTML = '<i class="bi bi-lock-fill"></i> Authorize & Confirm';
+      }
+    }
+  </script>
+</body>
+</html>
