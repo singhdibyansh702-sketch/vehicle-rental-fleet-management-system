@@ -45,13 +45,13 @@
   </nav>
 
   <!-- Dashboard Header -->
-  <header style="padding: 2.5rem 0 1.5rem; background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 60%); border-bottom: 1px solid var(--border);">
+  <header style="padding: 2.75rem 0 2rem; background: var(--bg-surface); border-bottom: 1px solid var(--border);">
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
         <div>
-          <div class="hero-pill" style="margin-bottom: 0.5rem;"><i class="bi bi-person-circle"></i> Customer Workspace</div>
-          <h1 id="welcome-msg" style="font-size: 2.2rem; font-weight: 800; color: #fff;">Welcome to ApexDrive</h1>
-          <p style="color: var(--text-muted);">Manage your bookings, inspect active rentals, view receipts, and update your driver profile.</p>
+          <div class="hero-pill" style="margin-bottom: 0.65rem;"><i class="bi bi-person-circle"></i> Customer Workspace</div>
+          <h1 id="welcome-msg" style="font-size: 2.2rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em;">Welcome to ApexDrive</h1>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">Manage your bookings, inspect active rentals, view receipts, and update your driver profile.</p>
         </div>
         <div>
           <a href="/vehicles.html" class="btn btn-primary">
@@ -165,7 +165,7 @@
     <!-- Tab 4: Profile Settings -->
     <section id="tab-profile" class="tab-content">
       <div class="card" style="max-width: 650px;">
-        <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.5rem;"><i class="bi bi-person-badge"></i> Update Driver Profile</h3>
+        <h3 style="color: var(--text-main); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;"><i class="bi bi-person-badge"></i> Update Driver Profile</h3>
         <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;">Keep your contact and license details updated for swift vehicle dispatch.</p>
 
         <form id="profile-form" onsubmit="handleProfileUpdate(event)">
@@ -213,7 +213,7 @@
       </div>
       <div class="modal-body">
         <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
-          Are you sure you want to cancel booking <strong id="cancel-booking-num" style="color: #fff;"></strong>? The vehicle will be released back to the available fleet.
+          Are you sure you want to cancel booking <strong id="cancel-booking-num" style="color: var(--text-main);"></strong>? The vehicle will be released back to the available fleet.
         </p>
 
         <div class="form-group" style="margin-bottom: 1.5rem;">
@@ -309,7 +309,7 @@
           container.innerHTML = `
             <div class="card" style="text-align: center; padding: 4rem 2rem;">
               <i class="bi bi-calendar-x" style="font-size: 3rem; color: var(--text-muted);"></i>
-              <h3 style="color: #fff; margin-top: 1rem;">No Bookings Found</h3>
+              <h3 style="color: var(--text-main); font-weight: 700; margin-top: 1rem;">No Bookings Found</h3>
               <p style="color: var(--text-muted); margin-bottom: 1.5rem;">You haven't reserved any vehicles yet. Explore our fleet to get started!</p>
               <a href="/vehicles.html" class="btn btn-primary"><i class="bi bi-car-front"></i> Browse Fleet Catalog</a>
             </div>
@@ -330,31 +330,31 @@
       return `
         <div class="card" style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
           <div style="display: flex; gap: 1.25rem; align-items: center; min-width: 280px;">
-            <div style="width: 110px; height: 75px; border-radius: var(--radius-md); overflow: hidden; background: #0f172a; flex-shrink: 0;">
+            <div style="width: 110px; height: 75px; border-radius: var(--radius-md); overflow: hidden; background: var(--bg-subtle); border: 1px solid var(--border); flex-shrink: 0;">
               <img src="${b.vehicleImageUrl || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80'}" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div>
               <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
                 <span class="badge ${statusClass}">${b.status}</span>
-                <span style="font-family: monospace; font-size: 0.8rem; color: #60a5fa;">#${b.bookingNumber}</span>
+                <span style="font-family: monospace; font-size: 0.8rem; color: var(--primary); font-weight: 700;">#${b.bookingNumber}</span>
               </div>
-              <h4 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.2rem;">${b.vehicleBrand} ${b.vehicleModel}</h4>
+              <h4 style="color: var(--text-main); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem;">${b.vehicleBrand} ${b.vehicleModel}</h4>
               <span class="vehicle-reg">${b.registrationNumber}</span>
             </div>
           </div>
 
           <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
             <div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Duration</div>
-              <div style="color: #fff; font-size: 0.9rem; font-weight: 600;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Duration</div>
+              <div style="color: var(--text-main); font-size: 0.9rem; font-weight: 600;">
                 ${formatDate(b.startDate)} &rarr; ${formatDate(b.endDate)}
               </div>
               <div style="font-size: 0.8rem; color: var(--text-sub);">${b.totalDays} Calendar Day${b.totalDays > 1 ? 's' : ''}</div>
             </div>
 
             <div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Total Billed</div>
-              <div style="color: #fff; font-size: 1.25rem; font-weight: 800;">${formatCurrency(b.totalAmount)}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Total Billed</div>
+              <div style="color: var(--text-main); font-size: 1.25rem; font-weight: 800;">${formatCurrency(b.totalAmount)}</div>
             </div>
 
             <div style="display: flex; gap: 0.5rem;">
@@ -382,7 +382,7 @@
           container.innerHTML = `
             <div class="card" style="text-align: center; padding: 4rem 2rem;">
               <i class="bi bi-key" style="font-size: 3rem; color: var(--text-muted);"></i>
-              <h3 style="color: #fff; margin-top: 1rem;">No Active Vehicle Possessions</h3>
+              <h3 style="color: var(--text-main); font-weight: 700; margin-top: 1rem;">No Active Vehicle Possessions</h3>
               <p style="color: var(--text-muted);">Once your confirmed booking is dispatched at the counter, your active trip telemetry will appear here.</p>
             </div>
           `;
@@ -397,33 +397,33 @@
                 <div>
                   <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
                     <span class="badge ${statusClass}">${r.rentalStatus}</span>
-                    <span style="font-family: monospace; font-size: 0.85rem; color: #60a5fa;">#${r.rentalNumber}</span>
+                    <span style="font-family: monospace; font-size: 0.85rem; color: var(--primary); font-weight: 700;">#${r.rentalNumber}</span>
                   </div>
-                  <h3 style="color: #fff; font-size: 1.25rem;">${r.booking?.vehicle?.brand || ''} ${r.booking?.vehicle?.model || ''}</h3>
+                  <h3 style="color: var(--text-main); font-size: 1.25rem; font-weight: 700;">${r.booking?.vehicle?.brand || ''} ${r.booking?.vehicle?.model || ''}</h3>
                   <span class="vehicle-reg">${r.booking?.vehicle?.registrationNumber || ''}</span>
                 </div>
                 <div style="text-align: right;">
                   <span style="font-size: 0.8rem; color: var(--text-muted);">Expected Return</span>
-                  <div style="color: #fff; font-weight: 700;">${formatDate(r.expectedReturnDate)}</div>
+                  <div style="color: var(--text-main); font-weight: 700;">${formatDate(r.expectedReturnDate)}</div>
                 </div>
               </div>
 
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; background: rgba(15, 23, 42, 0.4); padding: 1rem; border-radius: var(--radius-md);">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
                 <div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">Pickup Date</div>
-                  <div style="color: #fff; font-weight: 600;">${formatDate(r.pickupDate)}</div>
+                  <div style="color: var(--text-main); font-weight: 600;">${formatDate(r.pickupDate)}</div>
                 </div>
                 <div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">Initial Odometer</div>
-                  <div style="color: #fff; font-weight: 600;">${r.initialOdometer ? r.initialOdometer + ' km' : 'Standard'}</div>
+                  <div style="color: var(--text-main); font-weight: 600;">${r.initialOdometer ? r.initialOdometer + ' km' : 'Standard'}</div>
                 </div>
                 <div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">Return Odometer</div>
-                  <div style="color: #fff; font-weight: 600;">${r.returnOdometer ? r.returnOdometer + ' km' : 'Pending Return'}</div>
+                  <div style="color: var(--text-main); font-weight: 600;">${r.returnOdometer ? r.returnOdometer + ' km' : 'Pending Return'}</div>
                 </div>
                 <div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">Additional Surcharges</div>
-                  <div style="color: #fff; font-weight: 600;">${formatCurrency(r.additionalCharge || 0)}</div>
+                  <div style="color: var(--text-main); font-weight: 600;">${formatCurrency(r.additionalCharge || 0)}</div>
                 </div>
               </div>
             </div>
@@ -447,12 +447,12 @@
 
         tbody.innerHTML = payments.map(p => `
           <tr>
-            <td style="font-family: monospace; font-weight: 600; color: #fff;">${p.paymentNumber}</td>
+            <td style="font-family: monospace; font-weight: 600; color: var(--text-main);">${p.paymentNumber}</td>
             <td style="font-family: monospace;">${p.booking?.bookingNumber || '-'}</td>
             <td>${formatDate(p.paymentDate)}</td>
-            <td><span class="badge" style="background: rgba(255,255,255,0.08);">${p.paymentMethod}</span></td>
+            <td><span class="badge badge-outline">${p.paymentMethod}</span></td>
             <td style="font-family: monospace; font-size: 0.8rem; color: var(--text-sub);">${p.transactionId || '-'}</td>
-            <td style="font-weight: 700; color: #fff;">${formatCurrency(p.amount)}</td>
+            <td style="font-weight: 700; color: var(--text-main);">${formatCurrency(p.amount)}</td>
             <td><span class="badge badge-${p.paymentStatus.toLowerCase()}">${p.paymentStatus}</span></td>
           </tr>
         `).join('');
@@ -548,11 +548,11 @@
         <div style="border-bottom: 2px dashed var(--border); padding-bottom: 1.25rem; margin-bottom: 1.25rem;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
             <div>
-              <h2 style="color: #fff; font-size: 1.4rem;">ApexDrive Systems</h2>
+              <h2 style="color: var(--text-main); font-size: 1.4rem; font-weight: 800;">ApexDrive Systems</h2>
               <p style="color: var(--text-muted); font-size: 0.8rem;">Official Rental Invoice & Receipt</p>
             </div>
             <div style="text-align: right;">
-              <span style="font-family: monospace; font-size: 1rem; color: #60a5fa; font-weight: 700;">#${b.bookingNumber}</span>
+              <span style="font-family: monospace; font-size: 1rem; color: var(--primary); font-weight: 700;">#${b.bookingNumber}</span>
               <div style="font-size: 0.75rem; color: var(--text-muted);">${formatDate(b.createdAt)}</div>
             </div>
           </div>
@@ -560,39 +560,39 @@
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; font-size: 0.85rem;">
           <div>
-            <span style="color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem;">Customer Details:</span>
-            <div style="color: #fff; font-weight: 600;">${b.customerName}</div>
+            <span style="color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; font-weight: 600;">Customer Details:</span>
+            <div style="color: var(--text-main); font-weight: 600;">${b.customerName}</div>
             <div style="color: var(--text-sub);">${b.customerEmail}</div>
             <div style="color: var(--text-sub);">${b.customerPhone}</div>
           </div>
           <div>
-            <span style="color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem;">Vehicle Reserved:</span>
-            <div style="color: #fff; font-weight: 600;">${b.vehicleBrand} ${b.vehicleModel}</div>
+            <span style="color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; font-weight: 600;">Vehicle Reserved:</span>
+            <div style="color: var(--text-main); font-weight: 600;">${b.vehicleBrand} ${b.vehicleModel}</div>
             <div style="color: var(--text-sub); font-family: monospace;">${b.registrationNumber}</div>
             <div style="color: var(--text-sub);">${b.vehicleType} • ${b.fuelType}</div>
           </div>
         </div>
 
-        <div style="background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border); margin-bottom: 1rem; font-size: 0.85rem;">
+        <div style="background: var(--bg-subtle); padding: 1.15rem; border-radius: var(--radius-md); border: 1px solid var(--border); margin-bottom: 1rem; font-size: 0.85rem;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
             <span style="color: var(--text-sub);">Pickup Date:</span>
-            <strong style="color: #fff;">${formatDate(b.startDate)}</strong>
+            <strong style="color: var(--text-main);">${formatDate(b.startDate)}</strong>
           </div>
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
             <span style="color: var(--text-sub);">Return Date:</span>
-            <strong style="color: #fff;">${formatDate(b.endDate)}</strong>
+            <strong style="color: var(--text-main);">${formatDate(b.endDate)}</strong>
           </div>
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
             <span style="color: var(--text-sub);">Duration:</span>
-            <strong style="color: #fff;">${b.totalDays} Days</strong>
+            <strong style="color: var(--text-main);">${b.totalDays} Days</strong>
           </div>
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
             <span style="color: var(--text-sub);">Daily Rate:</span>
-            <strong style="color: #fff;">${formatCurrency(b.pricePerDay)} / day</strong>
+            <strong style="color: var(--text-main);">${formatCurrency(b.pricePerDay)} / day</strong>
           </div>
-          <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 0.5rem; font-size: 1.1rem; font-weight: 800; color: #fff;">
+          <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 0.5rem; font-size: 1.1rem; font-weight: 800; color: var(--text-main);">
             <span>Grand Total:</span>
-            <span style="color: #34d399;">${formatCurrency(b.totalAmount)}</span>
+            <span style="color: var(--primary);">${formatCurrency(b.totalAmount)}</span>
           </div>
         </div>
 

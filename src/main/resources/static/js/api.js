@@ -376,7 +376,7 @@ function updateNavbar() {
           <i class="bi bi-speedometer2"></i> Dashboard
         </a>
         <div style="display: flex; flex-direction: column; align-items: flex-end; font-size: 0.8rem;">
-          <span style="color: #fff; font-weight: 600;">${user.name}</span>
+          <span style="color: var(--text-main); font-weight: 600;">${user.name}</span>
           <span class="badge ${Auth.isAdmin() ? 'badge-rented' : 'badge-available'}" style="font-size: 0.65rem; padding: 0.1rem 0.4rem;">${roleBadge}</span>
         </div>
         <button onclick="handleLogout()" class="btn btn-outline btn-sm" title="Sign Out">

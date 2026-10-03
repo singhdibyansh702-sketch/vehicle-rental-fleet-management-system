@@ -25,7 +25,7 @@
       <a href="/admin/dashboard.html" class="brand-logo">
         <i class="bi bi-car-front-fill"></i>
         <span>ApexDrive</span>
-        <span class="brand-badge" style="background: linear-gradient(135deg, #ef4444, #dc2626);">Fleet Admin</span>
+        <span class="brand-badge" style="background: #fef2f2; color: #dc2626; border-color: #fecaca;">Fleet Admin</span>
       </a>
 
       <button class="mobile-toggle" aria-label="Toggle navigation">
@@ -45,14 +45,14 @@
   </nav>
 
   <!-- Admin Header -->
-  <header style="padding: 2rem 0 1.25rem; background: radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.12) 0%, transparent 60%); border-bottom: 1px solid var(--border);">
+  <header style="padding: 2.25rem 0 1.5rem; background: var(--bg-surface); border-bottom: 1px solid var(--border);">
     <div class="container-fluid">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
         <div>
-          <div class="hero-pill" style="margin-bottom: 0.5rem; border-color: rgba(239, 68, 68, 0.3); color: #f87171; background: rgba(239, 68, 68, 0.1);">
+          <div class="hero-pill" style="margin-bottom: 0.65rem; border-color: #fecaca; color: #dc2626; background: #fef2f2;">
             <i class="bi bi-shield-lock-fill"></i> Administrative Command
           </div>
-          <h1 style="font-size: 2rem; font-weight: 800; color: #fff;">Fleet Management & Operations</h1>
+          <h1 style="font-size: 2rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em;">Fleet Management & Operations</h1>
         </div>
 
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
@@ -410,9 +410,9 @@
         <form id="dispatch-form" onsubmit="handleDispatchSubmit(event)">
           <input type="hidden" id="d-booking-id">
 
-          <div style="background: rgba(37, 99, 235, 0.1); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
-            <div id="d-booking-summary" style="font-size: 0.9rem; color: #fff; font-weight: 600;"></div>
-            <div id="d-customer-summary" style="font-size: 0.825rem; color: var(--text-sub);"></div>
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border); padding: 1.15rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+            <div id="d-booking-summary" style="font-size: 0.95rem; color: var(--text-main); font-weight: 700;"></div>
+            <div id="d-customer-summary" style="font-size: 0.85rem; color: var(--text-sub); margin-top: 0.25rem;"></div>
           </div>
 
           <div class="form-group" style="margin-bottom: 1rem;">
@@ -452,9 +452,9 @@
         <form id="return-form" onsubmit="handleReturnSubmit(event)">
           <input type="hidden" id="r-rental-id">
 
-          <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
-            <div id="r-rental-summary" style="font-size: 0.95rem; color: #fff; font-weight: 700;"></div>
-            <div id="r-customer-summary" style="font-size: 0.85rem; color: var(--text-sub);"></div>
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border); padding: 1.15rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+            <div id="r-rental-summary" style="font-size: 0.95rem; color: var(--text-main); font-weight: 700;"></div>
+            <div id="r-customer-summary" style="font-size: 0.85rem; color: var(--text-sub); margin-top: 0.25rem;"></div>
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
@@ -637,17 +637,17 @@
           <tr>
             <td>
               <div style="display: flex; align-items: center; gap: 0.85rem;">
-                <img src="${v.imageUrl || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80'}" style="width: 55px; height: 38px; border-radius: var(--radius-sm); object-fit: cover;">
+                <img src="${v.imageUrl || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80'}" style="width: 55px; height: 38px; border-radius: var(--radius-sm); object-fit: cover; border: 1px solid var(--border);">
                 <div>
-                  <div style="color: #fff; font-weight: 700;">${v.brand} ${v.model}</div>
+                  <div style="color: var(--text-main); font-weight: 700;">${v.brand} ${v.model}</div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">${v.manufactureYear || 2023} • ${v.mileage || '16 km/l'}</div>
                 </div>
               </div>
             </td>
             <td><span class="vehicle-reg">${v.registrationNumber}</span></td>
-            <td><span class="badge" style="background: rgba(255,255,255,0.08);">${v.vehicleType}</span></td>
+            <td><span class="badge badge-outline">${v.vehicleType}</span></td>
             <td>${v.fuelType} / ${v.transmission} (${v.seatingCapacity} seats)</td>
-            <td style="font-weight: 700; color: #fff;">${formatCurrency(v.pricePerDay)}</td>
+            <td style="font-weight: 700; color: var(--text-main);">${formatCurrency(v.pricePerDay)}</td>
             <td>
               <select onchange="updateVehicleStatus(${v.id}, this.value)" class="form-control" style="padding: 0.25rem 0.5rem; font-size: 0.775rem; width: auto; font-weight: 600;">
                 <option value="AVAILABLE" ${v.status === 'AVAILABLE' ? 'selected' : ''}>AVAILABLE</option>
@@ -797,18 +797,18 @@
           const statusClass = `badge-${b.status.toLowerCase()}`;
           return `
             <tr>
-              <td style="font-family: monospace; font-weight: 700; color: #60a5fa;">#${b.bookingNumber}</td>
+              <td style="font-family: monospace; font-weight: 700; color: var(--primary);">#${b.bookingNumber}</td>
               <td>
-                <div style="font-weight: 600; color: #fff;">${b.customerName}</div>
+                <div style="font-weight: 600; color: var(--text-main);">${b.customerName}</div>
                 <div style="font-size: 0.75rem; color: var(--text-muted);">${b.customerPhone} • ${b.customerEmail}</div>
               </td>
               <td>
-                <div style="color: #fff; font-weight: 600;">${b.vehicleBrand} ${b.vehicleModel}</div>
+                <div style="color: var(--text-main); font-weight: 600;">${b.vehicleBrand} ${b.vehicleModel}</div>
                 <span class="vehicle-reg">${b.registrationNumber}</span>
               </td>
               <td>${formatDate(b.startDate)} &rarr; ${formatDate(b.endDate)}</td>
               <td>${b.totalDays} Days</td>
-              <td style="font-weight: 700; color: #fff;">${formatCurrency(b.totalAmount)}</td>
+              <td style="font-weight: 700; color: var(--text-main);">${formatCurrency(b.totalAmount)}</td>
               <td><span class="badge ${statusClass}">${b.status}</span></td>
               <td style="text-align: right;">
                 <div style="display: inline-flex; gap: 0.4rem;">
@@ -909,10 +909,10 @@
 
           return `
             <tr>
-              <td style="font-family: monospace; font-weight: 700; color: #60a5fa;">#${r.rentalNumber}</td>
+              <td style="font-family: monospace; font-weight: 700; color: var(--primary);">#${r.rentalNumber}</td>
               <td style="font-family: monospace;">#${r.booking?.bookingNumber || '-'}</td>
               <td>
-                <div style="color: #fff; font-weight: 600;">${r.booking?.vehicle?.brand || ''} ${r.booking?.vehicle?.model || ''}</div>
+                <div style="color: var(--text-main); font-weight: 600;">${r.booking?.vehicle?.brand || ''} ${r.booking?.vehicle?.model || ''}</div>
                 <span class="vehicle-reg">${r.booking?.vehicle?.registrationNumber || ''}</span>
               </td>
               <td>${r.booking?.customer?.name || '-'}</td>
@@ -1003,13 +1003,13 @@
             <tr>
               <td>#${m.id}</td>
               <td>
-                <div style="color: #fff; font-weight: 600;">${m.vehicle?.brand || ''} ${m.vehicle?.model || ''}</div>
+                <div style="color: var(--text-main); font-weight: 600;">${m.vehicle?.brand || ''} ${m.vehicle?.model || ''}</div>
                 <span class="vehicle-reg">${m.vehicle?.registrationNumber || ''}</span>
               </td>
               <td>${m.description}</td>
               <td>${formatDate(m.maintenanceDate)}</td>
               <td>${formatDate(m.completionDate)}</td>
-              <td style="font-weight: 700; color: #fff;">${formatCurrency(m.cost)}</td>
+              <td style="font-weight: 700; color: var(--text-main);">${formatCurrency(m.cost)}</td>
               <td>${m.serviceProvider || 'In-House Garage'}</td>
               <td><span class="badge ${statusClass}">${m.status}</span></td>
               <td style="text-align: right;">
@@ -1085,7 +1085,7 @@
         tbody.innerHTML = customers.map(c => `
           <tr>
             <td style="font-family: monospace;">#${c.id}</td>
-            <td style="font-weight: 600; color: #fff;">${c.name}</td>
+            <td style="font-weight: 600; color: var(--text-main);">${c.name}</td>
             <td>${c.email}</td>
             <td>${c.phone || '-'}</td>
             <td><span class="vehicle-reg">${c.drivingLicenseNumber || 'Unverified'}</span></td>
@@ -1108,12 +1108,12 @@
 
         tbody.innerHTML = payments.map(p => `
           <tr>
-            <td style="font-family: monospace; font-weight: 700; color: #fff;">${p.paymentNumber}</td>
+            <td style="font-family: monospace; font-weight: 700; color: var(--text-main);">${p.paymentNumber}</td>
             <td style="font-family: monospace;">#${p.booking?.bookingNumber || '-'}</td>
             <td>${formatDate(p.paymentDate)}</td>
-            <td><span class="badge" style="background: rgba(255,255,255,0.08);">${p.paymentMethod}</span></td>
+            <td><span class="badge badge-outline">${p.paymentMethod}</span></td>
             <td style="font-family: monospace; font-size: 0.8rem; color: var(--text-sub);">${p.transactionId || '-'}</td>
-            <td style="font-weight: 700; color: #fff;">${formatCurrency(p.amount)}</td>
+            <td style="font-weight: 700; color: var(--text-main);">${formatCurrency(p.amount)}</td>
             <td><span class="badge badge-${p.paymentStatus.toLowerCase()}">${p.paymentStatus}</span></td>
           </tr>
         `).join('');

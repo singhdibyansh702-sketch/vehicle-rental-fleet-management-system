@@ -46,13 +46,13 @@
   </nav>
 
   <!-- Breadcrumb Bar -->
-  <div style="background: rgba(15, 23, 42, 0.6); border-bottom: 1px solid var(--border); padding: 0.85rem 0;">
+  <div style="background: var(--bg-white); border-bottom: 1px solid var(--border); padding: 0.85rem 0;">
     <div class="container" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
       <a href="/index.html"><i class="bi bi-house"></i> Home</a>
       <span>/</span>
       <a href="/vehicles.html">Fleet Catalog</a>
       <span>/</span>
-      <span id="breadcrumb-title" style="color: #fff; font-weight: 600;">Vehicle Specifications</span>
+      <span id="breadcrumb-title" style="color: var(--text-main); font-weight: 600;">Vehicle Specifications</span>
     </div>
   </div>
 
@@ -69,7 +69,7 @@
         <!-- Left: Gallery & Specifications -->
         <div>
           <!-- Hero Vehicle Image Presentation -->
-          <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); height: 420px; background: #0f172a; margin-bottom: 1.5rem;">
+          <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); height: 420px; background: #f1f5f9; margin-bottom: 1.5rem;">
             <img id="detail-img" src="" alt="Vehicle photo" style="width: 100%; height: 100%; object-fit: cover;">
             <span id="detail-type-tag" class="vehicle-type-tag" style="top: 1.25rem; left: 1.25rem; font-size: 0.85rem; padding: 0.35rem 0.75rem;"></span>
             <span id="detail-status-badge" class="badge vehicle-badge-status" style="top: 1.25rem; right: 1.25rem; font-size: 0.85rem; padding: 0.4rem 0.8rem;"></span>
@@ -80,7 +80,7 @@
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
               <div>
                 <span id="detail-brand" style="text-transform: uppercase; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.05em; font-weight: 600;"></span>
-                <h1 id="detail-model" style="font-size: 2rem; font-weight: 800; color: #fff; line-height: 1.2;"></h1>
+                <h1 id="detail-model" style="font-size: 2rem; font-weight: 800; color: var(--text-main); line-height: 1.2;"></h1>
               </div>
               <span id="detail-reg" class="vehicle-reg" style="font-size: 0.95rem; padding: 0.35rem 0.75rem;"></span>
             </div>
@@ -88,45 +88,45 @@
             <p id="detail-desc" style="color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
 
             <!-- Detailed Grid Specs -->
-            <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
+            <h3 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 1rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
               <i class="bi bi-speedometer2"></i> Vehicle Specifications
             </h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
-              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+              <div class="spec-item" style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
                 <i class="bi bi-people" style="font-size: 1.25rem;"></i>
                 <span style="font-size: 0.75rem; color: var(--text-muted);">Capacity</span>
-                <strong id="detail-seats" style="color: #fff; font-size: 0.95rem;"></strong>
+                <strong id="detail-seats" style="color: var(--text-main); font-size: 0.95rem;"></strong>
               </div>
 
-              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+              <div class="spec-item" style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
                 <i class="bi bi-fuel-pump" style="font-size: 1.25rem;"></i>
                 <span style="font-size: 0.75rem; color: var(--text-muted);">Fuel System</span>
-                <strong id="detail-fuel" style="color: #fff; font-size: 0.95rem;"></strong>
+                <strong id="detail-fuel" style="color: var(--text-main); font-size: 0.95rem;"></strong>
               </div>
 
-              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+              <div class="spec-item" style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
                 <i class="bi bi-gear" style="font-size: 1.25rem;"></i>
                 <span style="font-size: 0.75rem; color: var(--text-muted);">Transmission</span>
-                <strong id="detail-trans" style="color: #fff; font-size: 0.95rem;"></strong>
+                <strong id="detail-trans" style="color: var(--text-main); font-size: 0.95rem;"></strong>
               </div>
 
-              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+              <div class="spec-item" style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
                 <i class="bi bi-calendar3" style="font-size: 1.25rem;"></i>
                 <span style="font-size: 0.75rem; color: var(--text-muted);">Model Year</span>
-                <strong id="detail-year" style="color: #fff; font-size: 0.95rem;"></strong>
+                <strong id="detail-year" style="color: var(--text-main); font-size: 0.95rem;"></strong>
               </div>
 
-              <div class="spec-item" style="background: rgba(255, 255, 255, 0.03); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.05);">
+              <div class="spec-item" style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
                 <i class="bi bi-speedometer" style="font-size: 1.25rem;"></i>
                 <span style="font-size: 0.75rem; color: var(--text-muted);">Rated Mileage</span>
-                <strong id="detail-mileage" style="color: #fff; font-size: 0.95rem;"></strong>
+                <strong id="detail-mileage" style="color: var(--text-main); font-size: 0.95rem;"></strong>
               </div>
             </div>
           </div>
 
           <!-- Included Features Assurance -->
           <div class="card">
-            <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 1rem;">
               <i class="bi bi-patch-check-fill" style="color: var(--primary);"></i> Included With Every Booking
             </h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.875rem; color: var(--text-sub);">
@@ -142,12 +142,12 @@
 
         <!-- Right: Reservation & Live Price Calculation Widget -->
         <div style="position: sticky; top: 96px;">
-          <div class="card" style="border-color: rgba(37, 99, 235, 0.4); box-shadow: var(--shadow-xl);">
+          <div class="card" style="border-color: var(--primary-border); box-shadow: var(--shadow-lg);">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
               <div>
                 <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Standard Rate</span>
                 <div style="display: flex; align-items: baseline; gap: 0.3rem;">
-                  <span id="widget-price" style="font-size: 2rem; font-weight: 800; color: #fff;"></span>
+                  <span id="widget-price" style="font-size: 2rem; font-weight: 800; color: var(--text-main);"></span>
                   <span style="color: var(--text-muted); font-size: 0.85rem;">/ day</span>
                 </div>
               </div>
@@ -174,10 +174,10 @@
               <div id="availability-banner" style="display: none; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.85rem; margin-bottom: 1.25rem;"></div>
 
               <!-- Price Breakdown Table -->
-              <div style="background: rgba(15, 23, 42, 0.5); border-radius: var(--radius-md); padding: 1rem; border: 1px solid var(--border); margin-bottom: 1.5rem; font-size: 0.875rem;">
+              <div style="background: var(--bg-subtle); border-radius: var(--radius-md); padding: 1rem; border: 1px solid var(--border); margin-bottom: 1.5rem; font-size: 0.875rem;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-sub);">
                   <span id="calc-days-label">3 Days × Daily Rate</span>
-                  <span id="calc-subtotal" style="color: #fff; font-weight: 600;">₹0</span>
+                  <span id="calc-subtotal" style="color: var(--text-main); font-weight: 600;">₹0</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-sub);">
                   <span>Taxes & GST (18%)</span>
@@ -187,9 +187,9 @@
                   <span>Mandatory Fleet Insurance</span>
                   <span style="color: var(--success); font-weight: 600;">FREE</span>
                 </div>
-                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 1.15rem; font-weight: 800; color: #fff;">
+                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 1.15rem; font-weight: 800; color: var(--text-main);">
                   <span>Estimated Total</span>
-                  <span id="calc-grand-total" style="color: #60a5fa;">₹0</span>
+                  <span id="calc-grand-total" style="color: var(--primary);">₹0</span>
                 </div>
               </div>
 
@@ -213,10 +213,10 @@
         <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <div style="background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.25); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem;">
-          <h4 id="checkout-vehicle-name" style="color: #fff; font-size: 1.1rem; margin-bottom: 0.25rem;"></h4>
+        <div style="background: var(--primary-light); border: 1px solid var(--primary-border); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem;">
+          <h4 id="checkout-vehicle-name" style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.25rem;"></h4>
           <p id="checkout-dates-text" style="color: var(--text-muted); font-size: 0.85rem;"></p>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.5rem; font-size: 1.1rem; font-weight: 700; color: #60a5fa;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">
             <span>Total Payable:</span>
             <span id="checkout-amount-display"></span>
           </div>
@@ -238,7 +238,7 @@
           </div>
 
           <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-            <i class="bi bi-info-circle"></i> This is a simulated student college project payment processor. No actual bank charge will occur.
+            <i class="bi bi-info-circle"></i> Simulated payment checkout (Demonstration mode). No actual bank or card charge will occur.
           </div>
 
           <div class="modal-footer" style="padding: 0; border: none;">
@@ -258,19 +258,19 @@
       <div style="width: 70px; height: 70px; border-radius: var(--radius-full); background: rgba(16, 185, 129, 0.2); color: var(--success); font-size: 2.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
         <i class="bi bi-check-lg"></i>
       </div>
-      <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 0.5rem;">Booking Confirmed!</h2>
+      <h2 style="color: var(--text-main); font-size: 1.6rem; margin-bottom: 0.5rem;">Booking Confirmed!</h2>
       <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
         Your vehicle reservation has been successfully placed and locked in.
       </p>
 
-      <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: left; font-size: 0.875rem;">
+      <div style="background: var(--bg-subtle); border: 1px solid var(--border); padding: 1.15rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: left; font-size: 0.875rem;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
           <span style="color: var(--text-muted);">Booking Reference:</span>
-          <strong id="success-booking-ref" style="color: #60a5fa; font-family: monospace;"></strong>
+          <strong id="success-booking-ref" style="color: var(--primary); font-family: monospace;"></strong>
         </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
           <span style="color: var(--text-muted);">Vehicle:</span>
-          <span id="success-vehicle-name" style="color: #fff; font-weight: 600;"></span>
+          <span id="success-vehicle-name" style="color: var(--text-main); font-weight: 600;"></span>
         </div>
         <div style="display: flex; justify-content: space-between;">
           <span style="color: var(--text-muted);">Payment Status:</span>
@@ -299,7 +299,7 @@
             <span>ApexDrive</span>
           </a>
           <p style="color: var(--text-muted); font-size: 0.875rem; max-width: 320px; line-height: 1.6;">
-            Next-generation fleet mobility platform engineered with Spring Boot 3, Java 17, and modern frontend styling.
+            A premier full-stack fleet rental platform offering transparent pricing, sanitized vehicles, and digital instant reservations.
           </p>
         </div>
         <div class="footer-col">
@@ -408,7 +408,7 @@
         document.getElementById('loading-state').innerHTML = `
           <div style="color: var(--danger);">
             <i class="bi bi-exclamation-triangle" style="font-size: 2.5rem;"></i>
-            <h3 style="margin-top: 1rem; color: #fff;">Vehicle Not Found</h3>
+            <h3 style="margin-top: 1rem; color: var(--text-main);">Vehicle Not Found</h3>
             <p style="color: var(--text-muted); margin-bottom: 1.5rem;">${err.message}</p>
             <a href="/vehicles.html" class="btn btn-primary btn-sm">Return to Fleet Catalog</a>
           </div>
@@ -431,9 +431,9 @@
 
       if (endDate <= startDate) {
         banner.style.display = 'block';
-        banner.style.background = 'rgba(239, 68, 68, 0.15)';
-        banner.style.color = '#f87171';
-        banner.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+        banner.style.background = 'var(--danger-light)';
+        banner.style.color = 'var(--danger-text)';
+        banner.style.border = '1px solid var(--danger-border)';
         banner.innerHTML = '<i class="bi bi-x-circle"></i> Return date must be strictly after pickup date.';
         reserveBtn.disabled = true;
         return;
@@ -454,15 +454,15 @@
 
         banner.style.display = 'block';
         if (isAvailable && currentVehicle.status !== 'MAINTENANCE') {
-          banner.style.background = 'rgba(16, 185, 129, 0.15)';
-          banner.style.color = '#34d399';
-          banner.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+          banner.style.background = 'var(--success-light)';
+          banner.style.color = 'var(--success-text)';
+          banner.style.border = '1px solid var(--success-border)';
           banner.innerHTML = '<i class="bi bi-check-circle"></i> Vehicle is available for your selected dates!';
           reserveBtn.disabled = false;
         } else {
-          banner.style.background = 'rgba(245, 158, 11, 0.15)';
-          banner.style.color = '#fbbf24';
-          banner.style.border = '1px solid rgba(245, 158, 11, 0.3)';
+          banner.style.background = 'var(--warning-light)';
+          banner.style.color = 'var(--warning-text)';
+          banner.style.border = '1px solid var(--warning-border)';
           banner.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Vehicle is booked/unavailable for these dates. Please choose alternate dates.';
           reserveBtn.disabled = true;
         }

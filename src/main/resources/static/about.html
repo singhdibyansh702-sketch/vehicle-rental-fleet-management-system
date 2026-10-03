@@ -44,71 +44,72 @@
   </nav>
 
   <!-- Page Header -->
-  <header style="padding: 4rem 0 3rem; background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 60%); border-bottom: 1px solid var(--border); text-align: center;">
-    <div class="container" style="max-width: 750px;">
-      <div class="hero-pill" style="margin-bottom: 0.75rem;"><i class="bi bi-info-circle"></i> Engineering Excellence</div>
-      <h1 style="font-size: 2.75rem; font-weight: 800; color: #fff; margin-bottom: 1rem;">
+  <header style="padding: 3.5rem 0 2.75rem; background: var(--bg-surface); border-bottom: 1px solid var(--border); text-align: center;">
+    <div class="container" style="max-width: 760px;">
+      <div class="hero-pill" style="margin-bottom: 0.85rem;"><i class="bi bi-info-circle"></i> Engineering Excellence</div>
+      <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.85rem; letter-spacing: -0.025em;">
         Redefining Self-Drive & Fleet Operations
       </h1>
-      <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
-        ApexDrive is a full-stack, enterprise-grade Vehicle Rental & Fleet Management platform designed for seamless booking, intelligent fleet maintenance scheduling, and real-time dispatch tracking.
+      <p style="color: var(--text-sub); font-size: 1.05rem; line-height: 1.65;">
+        ApexDrive is a modern, reliable Vehicle Rental & Fleet Management platform designed for straightforward self-drive bookings, transparent pricing, and robust fleet dispatch.
       </p>
     </div>
   </header>
 
   <!-- Content Section -->
-  <main class="container" style="padding: 4rem 1.5rem 5rem;">
-    <!-- Mission & Vision -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 4rem; align-items: center;">
+  <main class="container" style="padding: 3.5rem 1.5rem 5rem;">
+    <!-- Mission & Technical Architecture -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-bottom: 4rem; align-items: start;">
       <div>
-        <h2 style="font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 1rem;">Our Mission</h2>
-        <p style="color: var(--text-sub); line-height: 1.7; margin-bottom: 1rem;">
-          To democratize access to safe, reliable, and premium personal transportation through transparent pricing, zero deposit friction, and state-of-the-art vehicle telematics.
+        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; letter-spacing: -0.02em;">Our Mission</h2>
+        <p style="color: var(--text-sub); line-height: 1.75; margin-bottom: 1rem; font-size: 0.95rem;">
+          To make personal and family road trips simple, safe, and transparent. We eliminate hidden surcharges, offer upfront pricing, and ensure every vehicle is thoroughly inspected and cleaned prior to dispatch.
         </p>
-        <p style="color: var(--text-sub); line-height: 1.7;">
-          Whether you need a fuel-efficient hatchback for quick urban errands, a rugged 4x4 SUV for highway road trips, or an executive sedan for corporate travel, ApexDrive guarantees ready-to-drive condition.
+        <p style="color: var(--text-sub); line-height: 1.75; font-size: 0.95rem;">
+          Whether you need a fuel-efficient hatchback for quick city commutes, an executive sedan for business travel, or a rugged 7-seater SUV for family getaways, ApexDrive guarantees prime road readiness.
         </p>
       </div>
 
-      <div class="card" style="background: rgba(37, 99, 235, 0.05); border-color: rgba(37, 99, 235, 0.3);">
-        <h3 style="color: #60a5fa; font-size: 1.25rem; margin-bottom: 1rem;"><i class="bi bi-cpu"></i> Full-Stack Technical Architecture</h3>
-        <ul style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: var(--text-sub);">
-          <li><strong style="color: #fff;">Backend Framework:</strong> Spring Boot 3.2.5 on Java 17 LTS</li>
-          <li><strong style="color: #fff;">Persistence & ORM:</strong> Spring Data JPA & Hibernate 6</li>
-          <li><strong style="color: #fff;">Database Engine:</strong> MySQL 8.x / MariaDB with H2 In-Memory Fallback</li>
-          <li><strong style="color: #fff;">Security & Auth:</strong> Spring Security 6 with JJWT (HMAC-SHA256)</li>
-          <li><strong style="color: #fff;">Frontend Architecture:</strong> Vanilla Modern ES6+ & Custom Responsive CSS3</li>
+      <div class="card" style="background: var(--bg-surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); padding: 1.75rem;">
+        <h3 style="color: var(--primary); font-size: 1.15rem; font-weight: 700; margin-bottom: 1.15rem;"><i class="bi bi-cpu"></i> Full-Stack Technical Architecture</h3>
+        <ul style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.875rem; color: var(--text-sub);">
+          <li><strong style="color: var(--text-main);">Backend Framework:</strong> Spring Boot 3.5 on Java 25 LTS</li>
+          <li><strong style="color: var(--text-main);">Persistence & ORM:</strong> Spring Data JPA & Hibernate 6</li>
+          <li><strong style="color: var(--text-main);">Database Engine:</strong> MySQL 8.x / MariaDB with H2 fallback</li>
+          <li><strong style="color: var(--text-main);">Security & Auth:</strong> Spring Security with JJWT tokens</li>
+          <li><strong style="color: var(--text-main);">Frontend UI:</strong> Responsive semantic HTML5, CSS3 & Modern ES6</li>
         </ul>
       </div>
     </div>
 
     <!-- Core Pillars -->
     <div style="text-align: center; margin-bottom: 2rem;">
-      <h2 style="font-size: 2rem; font-weight: 800; color: #fff;">Our Core Pillars</h2>
+      <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em;">Our Core Pillars</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.35rem;">Built with craftsmanship, reliability, and driver safety first.</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
       <div class="card">
         <div class="stat-icon primary" style="margin-bottom: 1rem;"><i class="bi bi-shield-shaded"></i></div>
-        <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">Safety & Telematics</h3>
-        <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6;">
-          Real-time odometer logging, fuel consumption tracking, and periodic multi-point diagnostics on every check-in.
+        <h3 style="color: var(--text-main); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Safety & Inspections</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.65;">
+          Every car undergoes a comprehensive 40-point safety and mechanical check before each customer handover.
         </p>
       </div>
 
       <div class="card">
         <div class="stat-icon success" style="margin-bottom: 1rem;"><i class="bi bi-speedometer"></i></div>
-        <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">Zero Latency Booking</h3>
-        <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6;">
-          Conflict-free date overlap detection in database queries guarantees no double-booking ever occurs.
+        <h3 style="color: var(--text-main); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Instant Reservation</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.65;">
+          Real-time fleet inventory prevents double bookings and guarantees that reserved vehicles are held exclusively for you.
         </p>
       </div>
 
       <div class="card">
         <div class="stat-icon warning" style="margin-bottom: 1rem;"><i class="bi bi-wrench-adjustable"></i></div>
-        <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem;">Automated Fleet Maintenance</h3>
-        <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6;">
-          Integrated maintenance module flags out-of-order vehicles, tracks service provider costs, and restores status.
+        <h3 style="color: var(--text-main); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Proactive Maintenance</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.65;">
+          Scheduled oil changes, brake service, and tyre rotations keep all vehicles operating smoothly with high fuel economy.
         </p>
       </div>
     </div>
@@ -124,7 +125,7 @@
             <span>ApexDrive</span>
           </a>
           <p style="color: var(--text-muted); font-size: 0.875rem; max-width: 320px; line-height: 1.6;">
-            A college mini-project monolithic full-stack vehicle rental and fleet management system.
+            A premier full-stack fleet rental platform offering transparent pricing, sanitized vehicles, and digital instant reservations.
           </p>
         </div>
         <div class="footer-col">

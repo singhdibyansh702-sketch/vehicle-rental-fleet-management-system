@@ -46,12 +46,12 @@
   </nav>
 
   <!-- Page Header -->
-  <header style="padding: 3rem 0 2rem; background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 60%); border-bottom: 1px solid var(--border);">
+  <header style="padding: 3rem 0 2rem; background: var(--bg-white); border-bottom: 1px solid var(--border);">
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
         <div>
           <div class="hero-pill" style="margin-bottom: 0.5rem;"><i class="bi bi-collection"></i> Full Inventory</div>
-          <h1 style="font-size: 2.5rem; font-weight: 800; color: #fff;">Explore Our Fleet</h1>
+          <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--text-main);">Explore Our Fleet</h1>
           <p style="color: var(--text-muted);">Choose from premium sedans, 4x4 SUVs, electric vehicles, and touring bikes.</p>
         </div>
         <div id="fleet-count-badge" class="badge badge-active" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">
@@ -119,7 +119,7 @@
       <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 200px;">
         <span style="font-size: 0.8rem; color: var(--text-muted); white-space: nowrap;">Max Price:</span>
         <input type="range" id="filter-price" min="500" max="7000" step="200" value="7000" style="flex: 1;" oninput="updatePriceLabel(this.value)" onchange="applyFilters()">
-        <span id="price-display" style="font-size: 0.85rem; font-weight: 700; color: #fff; min-width: 60px;">₹7,000</span>
+        <span id="price-display" style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); min-width: 60px;">₹7,000</span>
       </div>
 
       <!-- Reset -->
@@ -271,7 +271,7 @@
           container.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 5rem 2rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border);">
               <i class="bi bi-search" style="font-size: 3rem; color: var(--text-muted);"></i>
-              <h3 style="color: #fff; margin-top: 1rem;">No Vehicles Match Your Search</h3>
+              <h3 style="color: var(--text-main); margin-top: 1rem;">No Vehicles Match Your Search</h3>
               <p style="color: var(--text-muted); max-width: 450px; margin: 0.5rem auto 1.5rem;">
                 Try adjusting your filter options, clearing keyword search, or resetting price range to see more options.
               </p>
